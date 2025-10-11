@@ -45,7 +45,7 @@
                 
                 <!-- Slide 3 - Vídeo -->
                 <div class="carousel-slide">
-                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.32.mp4" controls muted alt="Vídeo 1">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.32.mp4" controls preload="metadata">
                         Seu navegador não suporta vídeos.
                     </video>
                     <div class="slide-type">🎥</div>
@@ -53,7 +53,7 @@
                 
                 <!-- Slide 4 - Vídeo -->
                 <div class="carousel-slide">
-                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.34.mp4" controls muted alt="Vídeo 2">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.34.mp4" controls preload="metadata">
                         Seu navegador não suporta vídeos.
                     </video>
                     <div class="slide-type">🎥</div>
@@ -61,7 +61,7 @@
                 
                 <!-- Slide 5 - Vídeo -->
                 <div class="carousel-slide">
-                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.40.mp4" controls muted alt="Vídeo 3">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.40.mp4" controls preload="metadata">
                         Seu navegador não suporta vídeos.
                     </video>
                     <div class="slide-type">🎥</div>
@@ -69,7 +69,7 @@
                 
                 <!-- Slide 6 - Vídeo -->
                 <div class="carousel-slide">
-                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.42.mp4" controls muted alt="Vídeo 4">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.42.mp4" controls preload="metadata">
                         Seu navegador não suporta vídeos.
                     </video>
                     <div class="slide-type">🎥</div>
@@ -77,7 +77,7 @@
                 
                 <!-- Slide 7 - Vídeo -->
                 <div class="carousel-slide">
-                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.42 (1).mp4" controls muted alt="Vídeo 5">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.42 (1).mp4" controls preload="metadata">
                         Seu navegador não suporta vídeos.
                     </video>
                     <div class="slide-type">🎥</div>
@@ -85,7 +85,7 @@
                 
                 <!-- Slide 8 - Vídeo -->
                 <div class="carousel-slide">
-                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43.mp4" controls muted alt="Vídeo 6">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43.mp4" controls preload="metadata">
                         Seu navegador não suporta vídeos.
                     </video>
                     <div class="slide-type">🎥</div>
@@ -93,7 +93,7 @@
                 
                 <!-- Slide 9 - Vídeo -->
                 <div class="carousel-slide">
-                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43 (1).mp4" controls muted alt="Vídeo 7">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43 (1).mp4" controls preload="metadata">
                         Seu navegador não suporta vídeos.
                     </video>
                     <div class="slide-type">🎥</div>
@@ -101,7 +101,7 @@
                 
                 <!-- Slide 10 - Vídeo -->
                 <div class="carousel-slide">
-                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43 (2).mp4" controls muted alt="Vídeo 8">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43 (2).mp4" controls preload="metadata">
                         Seu navegador não suporta vídeos.
                     </video>
                     <div class="slide-type">🎥</div>
@@ -109,7 +109,7 @@
                 
                 <!-- Slide 11 - Vídeo -->
                 <div class="carousel-slide">
-                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43 (3).mp4" controls muted alt="Vídeo 9">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43 (3).mp4" controls preload="metadata">
                         Seu navegador não suporta vídeos.
                     </video>
                     <div class="slide-type">🎥</div>
@@ -378,6 +378,30 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializa carrossel após o conteúdo aparecer
     setTimeout(setupCarousel, 1000);
+    
+    // === CONTROLE DE VÍDEOS ===
+    function setupVideoControls() {
+        const videos = document.querySelectorAll('.carousel-slide video');
+        
+        videos.forEach(video => {
+            // Pause outros vídeos quando um é reproduzido
+            video.addEventListener('play', function() {
+                videos.forEach(otherVideo => {
+                    if (otherVideo !== video) {
+                        otherVideo.pause();
+                    }
+                });
+            });
+            
+            // Melhora a qualidade de reprodução
+            video.addEventListener('loadstart', function() {
+                this.preload = 'metadata';
+            });
+        });
+    }
+    
+    // Inicializa controles de vídeo
+    setTimeout(setupVideoControls, 1200);
     
     // === CONTADOR ROMÂNTICO ===
     function setupLoveCounter() {
