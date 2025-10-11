@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Nosso Amor - Site Romântico</title>
+    <link rel="stylesheet" href="estilo/style.css">
+</head>
+<body>
+    <!-- Splash Screen (visível inicialmente) -->
+<div class="splash-screen">
+    <button class="enter-button">Entrar no Site</button>
+</div>
+
+<!-- Conteúdo principal (escondido inicialmente) -->
+<div class="main-content">
+    
+    <!-- Player do Spotify -->
+    <div class="spotify-player">
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/5lLKJdDPy7qbsta6d88lKE?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    
+    <!-- Carrossel de Fotos e Vídeos -->
+    <div class="carousel-container">
+        <div class="carousel-header">
+            <h3>💖 Galeria</h3>
+            <div class="carousel-counter">
+                <span id="current-slide">1</span> / <span id="total-slides">11</span>
+            </div>
+        </div>
+        
+        <div class="carousel">
+            <div class="carousel-track">
+                <!-- Slide 1 - Imagem -->
+                <div class="carousel-slide active">
+                    <img src="img/WhatsApp Image 2025-10-11 at 05.22.41.jpeg" alt="Foto 1">
+                    <div class="slide-type">📷</div>
+                </div>
+                
+                <!-- Slide 2 - Imagem -->
+                <div class="carousel-slide">
+                    <img src="img/WhatsApp Image 2025-10-11 at 05.22.44.jpeg" alt="Foto 2">
+                    <div class="slide-type">📷</div>
+                </div>
+                
+                <!-- Slide 3 - Vídeo -->
+                <div class="carousel-slide">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.32.mp4" controls preload="metadata"></video>
+                    <div class="slide-type">🎬</div>
+                </div>
+                
+                <!-- Slide 4 - Vídeo -->
+                <div class="carousel-slide">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.34.mp4" controls preload="metadata"></video>
+                    <div class="slide-type">🎬</div>
+                </div>
+                
+                <!-- Slide 5 - Vídeo -->
+                <div class="carousel-slide">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.40.mp4" controls preload="metadata"></video>
+                    <div class="slide-type">🎬</div>
+                </div>
+                
+                <!-- Slide 6 - Vídeo -->
+                <div class="carousel-slide">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.42 (1).mp4" controls preload="metadata"></video>
+                    <div class="slide-type">🎬</div>
+                </div>
+                
+                <!-- Slide 7 - Vídeo -->
+                <div class="carousel-slide">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.42.mp4" controls preload="metadata"></video>
+                    <div class="slide-type">🎬</div>
+                </div>
+                
+                <!-- Slide 8 - Vídeo -->
+                <div class="carousel-slide">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43 (1).mp4" controls preload="metadata"></video>
+                    <div class="slide-type">🎬</div>
+                </div>
+                
+                <!-- Slide 9 - Vídeo -->
+                <div class="carousel-slide">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43 (2).mp4" controls preload="metadata"></video>
+                    <div class="slide-type">🎬</div>
+                </div>
+                
+                <!-- Slide 10 - Vídeo -->
+                <div class="carousel-slide">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43 (3).mp4" controls preload="metadata"></video>
+                    <div class="slide-type">🎬</div>
+                </div>
+                
+                <!-- Slide 11 - Vídeo -->
+                <div class="carousel-slide">
+                    <video src="img/WhatsApp Video 2025-10-11 at 05.22.43.mp4" controls preload="metadata"></video>
+                    <div class="slide-type">🎬</div>
+                </div>
+            </div>
+            
+            <!-- Botões de navegação -->
+            <button class="carousel-btn prev-btn" id="prevBtn">❮</button>
+            <button class="carousel-btn next-btn" id="nextBtn">❯</button>
+        </div>
+        
+        <!-- Indicadores (pontinhos) -->
+        <div class="carousel-indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+            <span class="indicator" data-slide="3"></span>
+            <span class="indicator" data-slide="4"></span>
+            <span class="indicator" data-slide="5"></span>
+            <span class="indicator" data-slide="6"></span>
+            <span class="indicator" data-slide="7"></span>
+            <span class="indicator" data-slide="8"></span>
+            <span class="indicator" data-slide="9"></span>
+            <span class="indicator" data-slide="10"></span>
+        </div>
+    </div>
+    
+    <!-- Contador de Tempo Romântico -->
+    <div class="love-counter">
+        <h2 class="love-title">💖 Eu te amo há</h2>
+        <div class="time-display">
+            <div class="time-unit">
+                <span id="years" class="time-number">0</span>
+                <span class="time-label">Anos</span>
+            </div>
+            <div class="time-unit">
+                <span id="days" class="time-number">0</span>
+                <span class="time-label">Dias</span>
+            </div>
+            <div class="time-unit">
+                <span id="hours" class="time-number">0</span>
+                <span class="time-label">Horas</span>
+            </div>
+            <div class="time-unit">
+                <span id="minutes" class="time-number">0</span>
+                <span class="time-label">Minutos</span>
+            </div>
+            <div class="time-unit">
+                <span id="seconds" class="time-number">0</span>
+                <span class="time-label">Segundos</span>
+            </div>
+        </div>
+        <div class="love-date">
+            💕 Desde 12 de Junho de 2023 💕
+        </div>
+    </div>
+    
+    <!-- Carta de Amor -->
+    <div class="love-letter">
+        <div class="letter-content">
+            <p>Sabe, às vezes paro para pensar em tudo que vivemos e a ficha cai: você é a minha maior aventura e o meu lugar de paz, tudo ao mesmo tempo.</p>
+            
+            <p>É como se o mundo se acalmasse quando estou ao seu lado, e ao mesmo tempo, a vida ganhasse uma cor vibrante que eu nem sabia que existia. Você me ensina a ser uma pessoa melhor, a enxergar a beleza nos pequenos detalhes e a valorizar cada momento.</p>
+            
+            <p>O seu sorriso tem o poder de iluminar o meu dia mais cinzento, e o seu abraço é o único lugar onde eu realmente me sinto em casa. Não é sobre o que você me dá, mas sobre o que você desperta em mim. Um amor que me faz querer ser mais, sonhar mais e viver mais.</p>
+            
+            <p>Sei que a vida pode ter seus desafios, mas com você, eu sinto que posso enfrentar qualquer coisa. Porque no final, o que importa não é o destino, mas a jornada. E a minha jornada com você é a mais linda de todas.</p>
+            
+            <p class="letter-signature">Obrigado por ser você. Por ser a minha pessoa, o meu porto seguro e a minha inspiração. <strong>Eu te amo, hoje e sempre.</strong></p>
+        </div>
+    </div>
+    
+    <!-- Os corações serão criados dinamicamente pelo JavaScript -->
+    <div class="heart">💖</div>
+    <div class="heart">�</div>
+    <div class="heart">💗</div>
+    <div class="heart">�💖</div>
+    <div class="heart">�</div>
+    <div class="heart">💖</div>
+    <div class="heart">�💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💖</div>
+    <div class="heart">💝</div>
+    <div class="heart">💓</div>
+    <div class="heart">💘</div>
+    <div class="heart">💞</div>
+    <div class="heart">💟</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💝</div>
+    <div class="heart">💓</div>
+    <div class="heart">💘</div>
+    <div class="heart">💞</div>
+    <div class="heart">💟</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💖</div>
+    <div class="heart">💓</div>
+    <div class="heart">💗</div>
+    <div class="heart">💖</div>
+    <div class="heart">💓</div>
+    <div class="heart">💘</div>
+    <div class="heart">💞</div>
+    <div class="heart">💓</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💝</div>
+    <div class="heart">💓</div>
+    <div class="heart">💘</div>
+    <div class="heart">💞</div>
+    <div class="heart">💟</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">💓</div>
+    <div class="heart">💖</div>
+    <div class="heart">💓</div>
+    <div class="heart">💘</div>
+    <div class="heart">💞</div>
+    <div class="heart">💟</div>
+    
+</div>
+
+<script>
+// JavaScript para o splash screen
+document.addEventListener('DOMContentLoaded', function() {
+    const enterButton = document.querySelector('.enter-button');
+    const splashScreen = document.querySelector('.splash-screen');
+    const mainContent = document.querySelector('.main-content');
+    
+    // Função para criar corações dinamicamente
+    function createHearts(quantidade) {
+        const heartEmojis = ['💖', '💕', '💗', '💝', '💓', '💘', '💞', '💟', '❤️', '💋'];
+        
+        for(let i = 0; i < quantidade; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            
+            // Escolhe emoji aleatório
+            const randomEmoji = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.textContent = randomEmoji;
+            
+            // Propriedades aleatórias
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            heart.style.fontSize = (20 + Math.random() * 25) + 'px';
+            
+            // Cores aleatórias (tons de rosa/vermelho)
+            const colors = ['#ff69b4', '#ff1493', '#dc143c', '#ff6347', '#ff4500', '#ffc0cb', '#ffb6c1'];
+            heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            mainContent.appendChild(heart);
+        }
+    }
+    
+    enterButton.addEventListener('click', function() {
+        // Anima o botão saindo
+        splashScreen.style.opacity = '0';
+        splashScreen.style.transform = 'scale(0.8)';
+        
+        // Após 0.5s remove o splash e mostra o conteúdo
+        setTimeout(() => {
+            splashScreen.style.display = 'none';
+            mainContent.style.display = 'block';
+            
+            // Cria 80 corações dinamicamente
+            createHearts(80);
+            
+            setTimeout(() => {
+                mainContent.style.opacity = '1';
+                mainContent.style.transform = 'scale(1)';
+            }, 50);
+        }, 500);
+    });
+    
+    // Função para adicionar mais corações continuamente
+    function addMoreHearts() {
+        if (mainContent.style.display === 'block') {
+            createHearts(5); // Adiciona 5 corações a cada 3 segundos
+            
+            // Remove corações antigos para não sobrecarregar
+            const hearts = document.querySelectorAll('.heart');
+            if (hearts.length > 150) {
+                for (let i = 0; i < 20; i++) {
+                    if (hearts[i]) hearts[i].remove();
+                }
+            }
+        }
+    }
+    
+    // Adiciona mais corações a cada 3 segundos
+    setInterval(addMoreHearts, 3000);
+    
+    // === CONTROLE DO CARROSSEL ===
+    let currentSlide = 0;
+    const totalSlides = 11;
+    
+    function setupCarousel() {
+        const track = document.querySelector('.carousel-track');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicators = document.querySelectorAll('.indicator');
+        const currentSlideSpan = document.getElementById('current-slide');
+        const slides = document.querySelectorAll('.carousel-slide');
+        
+        function updateCarousel() {
+            // Atualiza indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Atualiza contador
+            currentSlideSpan.textContent = currentSlide + 1;
+            
+            // Pausa todos os vídeos
+            slides.forEach(slide => {
+                const video = slide.querySelector('video');
+                if (video) video.pause();
+            });
+            
+            // Atualiza classe active (sistema de sobreposição)
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+        
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide(index));
+        });
+        
+        // Auto-play (opcional)
+        setInterval(nextSlide, 5000); // Muda a cada 5 segundos
+        
+        // Teclas do teclado
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+        
+        // Inicializa
+        updateCarousel();
+    }
+    
+    // Inicializa carrossel após o conteúdo aparecer
+    setTimeout(setupCarousel, 1000);
+    
+    // === CONTADOR ROMÂNTICO ===
+    function setupLoveCounter() {
+        // Data de início do relacionamento: 12 de junho de 2023
+        const startDate = new Date('2023-06-12T00:00:00');
+        
+        function updateCounter() {
+            const now = new Date();
+            const timeDifference = now - startDate;
+            
+            // Calcula os valores
+            const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365));
+            const days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+            
+            // Atualiza os elementos HTML
+            const yearsElement = document.getElementById('years');
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+            
+            if (yearsElement) yearsElement.textContent = years;
+            if (daysElement) daysElement.textContent = days;
+            if (hoursElement) hoursElement.textContent = hours.toString().padStart(2, '0');
+            if (minutesElement) minutesElement.textContent = minutes.toString().padStart(2, '0');
+            if (secondsElement) secondsElement.textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Atualiza imediatamente
+        updateCounter();
+        
+        // Atualiza a cada segundo
+        setInterval(updateCounter, 1000);
+    }
+    
+    // Inicializa contador após o conteúdo aparecer
+    setTimeout(setupLoveCounter, 1000);
+    
+});
+</script>
+
+</body>
+</html>
