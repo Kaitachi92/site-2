@@ -1,0 +1,839 @@
+
+
+/* === SPLASH SCREEN === */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff1744, #e91e63, #9c27b0, #673ab7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: all 0.5s ease-in-out;
+}
+
+.enter-button {
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    border: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: pulse 2s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.enter-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.enter-button:hover::before {
+    left: 100%;
+}
+
+/* Animação de pulso */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.enter-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.7);
+    background: linear-gradient(45deg, #ff1493, #ff69b4);
+}
+
+.enter-button:active {
+    transform: translateY(0) scale(0.95);
+}
+
+/* === CONTEÚDO PRINCIPAL === */
+.main-content {
+    display: none;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.6s ease-in-out;
+}
+
+body{
+    background-color:black;
+    overflow-x: hidden; /* Remove scroll horizontal apenas */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color:white;
+    text-align:center;
+    position: relative;
+    z-index: 10; /* Fica acima dos corações */
+    margin-bottom: 30px;
+}
+
+/* Player do Spotify */
+.spotify-player {
+    position: relative;
+    z-index: 10; /* Fica acima dos corações */
+    max-width: 400px;
+    margin: 0 auto 30px auto; /* Centraliza e adiciona espaço embaixo */
+    background: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente */
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+    box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3); /* Sombra rosa */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.spotify-player iframe {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* === CARROSSEL === */
+.carousel-container {
+    position: relative;
+    z-index: 10;
+    max-width: 450px;
+    margin: 0 auto 30px auto;
+}
+
+.carousel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(255, 105, 180, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.carousel-header h3 {
+    color: white;
+    margin: 0;
+    font-size: 18px;
+}
+
+.carousel-counter {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    background: rgba(255, 105, 180, 0.2);
+    padding: 5px 12px;
+    border-radius: 15px;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide img,
+.carousel-slide video {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.slide-type {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 105, 180, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+    backdrop-filter: blur(10px);
+    z-index: 12;
+}
+
+/* Botões de navegação */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 105, 180, 0.8);
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 11;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 105, 180, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Indicadores */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active,
+.indicator:hover {
+    background: #ff69b4;
+    transform: scale(1.2);
+}
+
+/* Animação de entrada */
+.carousel-slide.active {
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* === CONTADOR ROMÂNTICO === */
+.love-counter {
+    position: relative;
+    z-index: 10;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(255, 105, 180, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.love-title {
+    color: white;
+    font-size: 24px;
+    margin: 0 0 20px 0;
+    text-shadow: 0 2px 10px rgba(255, 105, 180, 0.5);
+    font-weight: bold;
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.time-unit {
+    background: rgba(255, 105, 180, 0.2);
+    border-radius: 15px;
+    padding: 15px 10px;
+    min-width: 80px;
+    border: 1px solid rgba(255, 105, 180, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.time-unit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+
+.time-number {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff69b4;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    animation: pulse-number 2s ease-in-out infinite;
+}
+
+.time-label {
+    display: block;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+.love-date {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-style: italic;
+    background: rgba(255, 105, 180, 0.1);
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 105, 180, 0.2);
+}
+
+/* Animação dos números */
+@keyframes pulse-number {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsivo para o contador */
+@media (max-width: 600px) {
+    .time-display {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .time-unit {
+        min-width: 60px;
+        padding: 10px 5px;
+    }
+    
+    .time-number {
+        font-size: 20px;
+    }
+    
+    .love-title {
+        font-size: 20px;
+    }
+}
+
+/* === CARTA DE AMOR === */
+.love-letter {
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(255, 105, 180, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: letterGlow 3s ease-in-out infinite alternate;
+}
+
+.letter-content {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+    font-family: 'Georgia', serif;
+}
+
+.letter-content p {
+    margin: 0 0 20px 0;
+    text-indent: 20px;
+    animation: textFadeIn 1s ease-in-out;
+}
+
+.letter-content p:last-child {
+    margin-bottom: 0;
+}
+
+.letter-signature {
+    text-align: center !important;
+    font-style: italic;
+    color: #ff69b4 !important;
+    font-size: 18px !important;
+    margin-top: 25px !important;
+    text-indent: 0 !important;
+    text-shadow: 0 2px 10px rgba(255, 105, 180, 0.5);
+}
+
+.letter-signature strong {
+    color: white;
+    font-size: 20px;
+    text-shadow: 0 2px 15px rgba(255, 105, 180, 0.7);
+}
+
+/* Animação da carta */
+@keyframes letterGlow {
+    0% {
+        box-shadow: 0 8px 32px rgba(255, 105, 180, 0.4);
+    }
+    100% {
+        box-shadow: 0 12px 40px rgba(255, 105, 180, 0.6);
+    }
+}
+
+@keyframes textFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsivo para a carta */
+@media (max-width: 600px) {
+    .love-letter {
+        margin: 0 20px 40px 20px;
+        padding: 20px;
+    }
+    
+    .letter-content {
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: left;
+    }
+    
+    .letter-content p {
+        text-indent: 10px;
+    }
+    
+    .letter-signature {
+        font-size: 16px !important;
+    }
+    
+    .letter-signature strong {
+        font-size: 18px;
+    }
+}
+
+/* Animação da chuva de corações */
+.heart {
+    position: absolute;
+    color: #ff69b4;
+    animation: fall linear infinite;
+    top: -50px;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Animação de queda */
+@keyframes fall {
+    from {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* === RESPONSIVO MOBILE === */
+
+/* Tablets pequenos e celulares grandes (até 768px) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        padding: 0 20px;
+    }
+    
+    /* Splash Screen */
+    .enter-button {
+        font-size: 20px;
+        padding: 18px 35px;
+        letter-spacing: 1px;
+    }
+    
+    /* Player Spotify */
+    .spotify-player {
+        max-width: 90%;
+        margin: 0 auto 25px auto;
+        padding: 15px;
+    }
+    
+    .spotify-player iframe {
+        height: 120px;
+    }
+    
+    /* Carrossel */
+    .carousel-container {
+        max-width: 90%;
+        margin: 0 auto 25px auto;
+    }
+    
+    .carousel-header {
+        padding: 12px 15px;
+        margin-bottom: 15px;
+    }
+    
+    .carousel-header h3 {
+        font-size: 16px;
+    }
+    
+    .carousel-counter {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+    
+    .carousel {
+        height: 250px;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    
+    .prev-btn {
+        left: 5px;
+    }
+    
+    .next-btn {
+        right: 5px;
+    }
+    
+    .slide-type {
+        top: 15px;
+        right: 15px;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    
+    /* Contador de amor */
+    .love-counter {
+        max-width: 90%;
+        margin: 0 auto 25px auto;
+        padding: 20px;
+    }
+    
+    .love-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .time-display {
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+    
+    .time-unit {
+        min-width: 70px;
+        padding: 12px 8px;
+    }
+    
+    .time-number {
+        font-size: 22px;
+    }
+    
+    .time-label {
+        font-size: 11px;
+    }
+    
+    .love-date {
+        font-size: 13px;
+        padding: 8px 15px;
+    }
+}
+
+/* Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    /* Splash Screen */
+    .enter-button {
+        font-size: 18px;
+        padding: 15px 30px;
+        letter-spacing: 1px;
+    }
+    
+    /* Player Spotify */
+    .spotify-player {
+        max-width: 95%;
+        padding: 12px;
+    }
+    
+    .spotify-player iframe {
+        height: 100px;
+    }
+    
+    /* Carrossel */
+    .carousel-container {
+        max-width: 95%;
+    }
+    
+    .carousel-header {
+        padding: 10px 12px;
+        margin-bottom: 12px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .carousel-header h3 {
+        font-size: 14px;
+        margin: 0;
+    }
+    
+    .carousel-counter {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+    
+    .carousel {
+        height: 200px;
+    }
+    
+    .carousel-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    
+    .carousel-indicators {
+        gap: 6px;
+        margin-top: 10px;
+    }
+    
+    .indicator {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .slide-type {
+        top: 10px;
+        right: 10px;
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+    
+    /* Contador de amor */
+    .love-counter {
+        max-width: 95%;
+        padding: 15px;
+    }
+    
+    .love-title {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    .time-display {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 12px;
+    }
+    
+    .time-unit {
+        min-width: 60px;
+        padding: 10px 6px;
+        flex: 1;
+        max-width: calc(50% - 3px);
+    }
+    
+    .time-number {
+        font-size: 18px;
+    }
+    
+    .time-label {
+        font-size: 10px;
+    }
+    
+    .love-date {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    /* Carta de amor */
+    .love-letter {
+        margin: 0 10px 30px 10px;
+        padding: 15px;
+    }
+    
+    .letter-content {
+        font-size: 13px;
+        line-height: 1.6;
+        text-align: left;
+    }
+    
+    .letter-content p {
+        text-indent: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .letter-signature {
+        font-size: 14px !important;
+        margin-top: 20px !important;
+    }
+    
+    .letter-signature strong {
+        font-size: 16px;
+    }
+}
+
+/* Celulares muito pequenos (até 320px) */
+@media (max-width: 320px) {
+    h1 {
+        font-size: 20px;
+        padding: 0 15px;
+    }
+    
+    .enter-button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+    
+    .spotify-player,
+    .carousel-container,
+    .love-counter {
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 10px;
+    }
+    
+    .carousel {
+        height: 180px;
+    }
+    
+    .time-unit {
+        min-width: 50px;
+        padding: 8px 4px;
+    }
+    
+    .time-number {
+        font-size: 16px;
+    }
+    
+    .time-label {
+        font-size: 9px;
+    }
+    
+    .letter-content {
+        font-size: 12px;
+    }
+    
+    .letter-signature {
+        font-size: 13px !important;
+    }
+    
+    .letter-signature strong {
+        font-size: 14px;
+    }
+}
+
+/* Orientação paisagem para celulares */
+@media (max-height: 500px) and (orientation: landscape) {
+    .carousel {
+        height: 150px;
+    }
+    
+    .love-counter {
+        padding: 10px;
+    }
+    
+    .time-display {
+        gap: 4px;
+    }
+    
+    .time-unit {
+        padding: 8px 4px;
+    }
+    
+    .love-letter {
+        padding: 10px;
+    }
+    
+    .letter-content {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+}
+
+/* Touch improvements para mobile */
+@media (hover: none) and (pointer: coarse) {
+    .carousel-btn {
+        opacity: 1;
+        background: rgba(255, 105, 180, 0.9);
+    }
+    
+    .indicator {
+        transform: scale(1.3);
+    }
+    
+    .enter-button {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
