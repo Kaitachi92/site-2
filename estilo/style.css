@@ -110,6 +110,10 @@ h1 {
 .spotify-player iframe {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 152px;
+    max-width: 100%;
+    background: #121212;
 }
 
 /* === CARROSSEL === */
@@ -393,6 +397,18 @@ html {
 
 /* Responsivo para o contador */
 @media (max-width: 600px) {
+    /* Ajustes específicos para Spotify no mobile */
+    .spotify-player {
+        max-width: 100%;
+        padding: 15px;
+        margin: 0 auto 20px auto;
+    }
+    
+    .spotify-player iframe {
+        height: 120px;
+        border-radius: 8px;
+    }
+    
     .time-display {
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
