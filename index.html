@@ -18,19 +18,20 @@
     <!-- Player do Spotify -->
     <div class="spotify-player">
         <iframe 
+            data-testid="embed-iframe" 
             style="border-radius:12px" 
-            src="https://open.spotify.com/embed/track/5lLKJdDPy7qbsta6d88lKE?utm_source=generator&theme=0" 
+            src="https://open.spotify.com/embed/track/3iuC8v3WfFpMqQRg1NHDZM?utm_source=generator" 
             width="100%" 
             height="152" 
             frameBorder="0" 
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
             loading="lazy"
-            sandbox="allow-same-origin allow-scripts allow-presentation allow-forms"
             onerror="this.style.display='none'; document.querySelector('.spotify-fallback').style.display='block';">
         </iframe>
         <div class="spotify-fallback" style="display: none; text-align: center; padding: 20px;">
             <p style="color: #1db954; margin: 0;">🎵 Ouça nossa música no Spotify</p>
-            <a href="https://open.spotify.com/track/5lLKJdDPy7qbsta6d88lKE" target="_blank" 
+            <a href="https://open.spotify.com/track/3iuC8v3WfFpMqQRg1NHDZM" target="_blank" 
                style="color: #1db954; text-decoration: none; font-weight: bold;">
                ▶️ Abrir no Spotify
             </a>
@@ -42,7 +43,7 @@
         <div class="carousel-header">
             <h3>💖 Galeria</h3>
             <div class="carousel-counter">
-                <span id="current-slide">1</span> / <span id="total-slides">2</span>
+                <span id="current-slide">1</span> / <span id="total-slides">4</span>
             </div>
         </div>
         
@@ -50,13 +51,25 @@
             <div class="carousel-track">
                 <!-- Slide 1 - Imagem -->
                 <div class="carousel-slide active">
-                    <img src="img/WhatsApp Image 2025-10-11 at 05.22.41.jpeg" alt="Foto 1">
+                    <img src="img/Imagem do WhatsApp de 2025-10-29 à(s) 18.45.37_1dfeb8a0.jpg" alt="Foto 1">
                     <div class="slide-type">📷</div>
                 </div>
                 
                 <!-- Slide 2 - Imagem -->
                 <div class="carousel-slide">
-                    <img src="img/WhatsApp Image 2025-10-11 at 05.22.44.jpeg" alt="Foto 2">
+                    <img src="img/Imagem do WhatsApp de 2025-10-29 à(s) 18.49.03_70a64fa2.jpg" alt="Foto 2">
+                    <div class="slide-type">📷</div>
+                </div>
+                
+                <!-- Slide 3 - Imagem -->
+                <div class="carousel-slide">
+                    <img src="img/Imagem do WhatsApp de 2025-10-29 à(s) 18.49.04_c92d4884.jpg" alt="Foto 3">
+                    <div class="slide-type">📷</div>
+                </div>
+                
+                <!-- Slide 4 - Imagem -->
+                <div class="carousel-slide">
+                    <img src="img/Imagem do WhatsApp de 2025-10-29 à(s) 18.49.09_4875a604.jpg" alt="Foto 4">
                     <div class="slide-type">📷</div>
                 </div>
             </div>
@@ -70,6 +83,8 @@
         <div class="carousel-indicators">
             <span class="indicator active" data-slide="0"></span>
             <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+            <span class="indicator" data-slide="3"></span>
         </div>
     </div>
     
@@ -99,22 +114,18 @@
             </div>
         </div>
         <div class="love-date">
-            💕 Desde 12 de Junho de 2023 💕
+            💕 Desde 03 de Março de 2020 💕
         </div>
     </div>
     
     <!-- Carta de Amor -->
     <div class="love-letter">
         <div class="letter-content">
-            <p>Sabe, às vezes paro para pensar em tudo que vivemos e a ficha cai: você é a minha maior aventura e o meu lugar de paz, tudo ao mesmo tempo.</p>
+            <p>Desde a primeira vez que eu te vi não consegui tirar você da minha cabeça, sempre pedi a Deus uma pessoa assim como você, esforçada, engraçada, carinhosa, perfeita, de um sorriso maravilhoso e um olhar calmo.</p>
             
-            <p>É como se o mundo se acalmasse quando estou ao seu lado, e ao mesmo tempo, a vida ganhasse uma cor vibrante que eu nem sabia que existia. Você me ensina a ser uma pessoa melhor, a enxergar a beleza nos pequenos detalhes e a valorizar cada momento.</p>
+            <p>Você me transmite paz e é essa paz que eu quero pra minha vida, a paz de estar nos seus braços no seu colo.</p>
             
-            <p>O seu sorriso tem o poder de iluminar o meu dia mais cinzento, e o seu abraço é o único lugar onde eu realmente me sinto em casa. Não é sobre o que você me dá, mas sobre o que você desperta em mim. Um amor que me faz querer ser mais, sonhar mais e viver mais.</p>
-            
-            <p>Sei que a vida pode ter seus desafios, mas com você, eu sinto que posso enfrentar qualquer coisa. Porque no final, o que importa não é o destino, mas a jornada. E a minha jornada com você é a mais linda de todas.</p>
-            
-            <p class="letter-signature">Obrigado por ser você. Por ser a minha pessoa, o meu porto seguro e a minha inspiração. <strong>Eu te amo, hoje e sempre.</strong></p>
+            <p class="letter-signature">Eu te amo muito amor, você sempre será meu maior e mais preciso mimo. <strong>❤</strong></p>
         </div>
     </div>
     
@@ -245,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // === CONTROLE DO CARROSSEL ===
     let currentSlide = 0;
-    const totalSlides = 2;
+    const totalSlides = 4;
     
     function setupCarousel() {
         const track = document.querySelector('.carousel-track');
@@ -413,8 +424,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // === CONTADOR ROMÂNTICO ===
     function setupLoveCounter() {
-        // Data de início do relacionamento: 12 de junho de 2023
-        const startDate = new Date('2023-06-12T00:00:00');
+        // Data de início do relacionamento: 03 de março de 2020
+        const startDate = new Date('2020-03-03T00:00:00');
         
         function updateCounter() {
             const now = new Date();
